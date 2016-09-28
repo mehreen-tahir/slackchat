@@ -1,5 +1,5 @@
 class ChatroomsController < ApplicationController
-  before_action :set_chatroom, only: [:show, :edit, :update, :destroy]
+  before_action :set_chatroom, only: [:show, :edit, :update, :destroy, :join, :leave]
 
   # GET /chatrooms
   # GET /chatrooms.json
@@ -58,6 +58,20 @@ class ChatroomsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to chatrooms_url, notice: 'Chatroom was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def join
+    @chatroom.add_chatroom_user(current_user)
+    respond_to do |format|
+      format.html { redirect_to chatrooms_path, notice: "You have been successfully joined #{@chatroom.titleize_name}."  }
+    end
+  end
+
+  def leave
+    @chatroom.remove_chatroom_user(current_user)
+    respond_to do |format|
+      format.html { redirect_to chatrooms_path, notice: "You have been successfully removed from #{@chatroom.titleize_name}." }
     end
   end
 
