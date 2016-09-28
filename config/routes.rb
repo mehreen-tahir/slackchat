@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  resources :chatrooms
+  resources :chatrooms do
+    member do
+      post :join
+      post :leave
+    end
+  end
+
   devise_for :users
 
   root 'chatrooms#index'
