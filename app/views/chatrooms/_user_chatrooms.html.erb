@@ -1,6 +1,9 @@
 <h5>ChatRooms</h5>
 <ul>
   <% current_user.chatrooms.each do |chatroom| %>
-    <li> <%= link_to chatroom.titleize_name, chatroom_path(chatroom) %> </li>
+    <li data-behaviour='user-chatrooms', data-chatroom-id="<%= chatroom.id %>">
+      <%= link_to chatroom.titleize_name, chatroom_path(chatroom) %>
+      <span></span>
+    </li>
   <% end %>
 </ul>
