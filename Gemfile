@@ -48,3 +48,4 @@ end
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'devise'
 gem 'devise-bootstrapped'
+gem 'puma'
