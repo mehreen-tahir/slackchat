@@ -5,13 +5,7 @@ class MessagesController < ApplicationController
   def create
     message = @chatroom.messages.new(message_params)
     message.user = current_user
-    respond_to do |format|
-      if message.save
-        format.html { redirect_to @chatroom, notice: 'Message added to chat.' }
-      else
-        format.html { render :new }
-      end
-    end
+    message.save
   end
 
   private
@@ -20,6 +14,6 @@ class MessagesController < ApplicationController
     end
 
     def message_params
-      params.require(:message).permit(:body)
+      params.require(:message).permit(:body, :chatroom_id)
     end
 end

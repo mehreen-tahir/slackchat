@@ -10,7 +10,7 @@
   <% end %>
 </div>
 
-<%= form_for @message do |f| %>
+<%= form_for @message, { remote: true } do |f| %>
   <%= f.hidden_field :chatroom_id, value: @chatroom.id %>
   <%= f.text_field :body, class: "form-control", autofocus: true %>
 <% end %>
