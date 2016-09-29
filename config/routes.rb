@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :messages, only: [:create]
   devise_for :users
 
   root 'chatrooms#index'
