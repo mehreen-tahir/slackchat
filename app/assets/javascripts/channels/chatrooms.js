@@ -6,5 +6,6 @@ App.chatrooms = App.cable.subscriptions.create("ChatroomsChannel", {
   },
 
   received: function(data) {
+    $("[data-behaviour='messages']").append(data.message)
   }
 });
