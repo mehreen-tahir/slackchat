@@ -6,5 +6,5 @@ message_submission_hooked = ->
     App.chatrooms.send_message_to_channel_js(chatroom_id, message.val())
     message.val('')
 
-$ ->
- message_submission_hooked()
+$(document).on "turbolinks:load", ->
+  message_submission_hooked()
