@@ -11,3 +11,6 @@ App.chatrooms = App.cable.subscriptions.create 'ChatroomsChannel',
       specific_chatroom_link = $("[data-behaviour='user-chatrooms'][data-chatroom-id='#{data.chatroom_id}']")
       specific_chatroom_link.css('font-weight', 'bold')
       specific_chatroom_link.find('span').text(unread_messages)
+
+  send_message_to_channel_js: (chatroom_id, message) ->
+    @perform "send_message_to_server_channel", { chatroom_id: chatroom_id, message: message }

@@ -1,3 +1,10 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+message_submission_hooked = ->
+  $('#new_message').on 'submit', (e) ->
+    e.preventDefault()
+    chatroom_id = $("#message_chatroom_id").val()
+    message = $("#message_body")
+    App.chatrooms.send_message_to_channel_js(chatroom_id, message.val())
+    message.val('')
+
+$ ->
+ message_submission_hooked()
