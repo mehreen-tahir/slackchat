@@ -4,6 +4,7 @@ App.chatrooms = App.cable.subscriptions.create 'ChatroomsChannel',
   disconnected: ->
   received: (data) ->
     specific_chatroom_messages = $("[data-chatroom-id='#{data.chatroom_id}'][data-behaviour='messages']")
+    message_notification(data.message)
     if specific_chatroom_messages.length > 0
       specific_chatroom_messages.append data.message
     else

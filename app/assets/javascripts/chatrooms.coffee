@@ -6,5 +6,18 @@ message_submission_hooked = ->
     App.chatrooms.send_message_to_channel_js(chatroom_id, message.val())
     message.val('')
 
+@message_notification = (message) ->
+  toastr.options = {
+    closeButton: true,
+    progressBar: true,
+    preventDuplicates: true,
+    positionClass: 'toast-top-right',
+    showEasing: "swing",
+    hideEasing: "linear",
+    showMethod: "fadeIn",
+    hideMethod: "fadeOut"
+  };
+  toastr.info(message, 'Message')
+
 $(document).on "turbolinks:load", ->
   message_submission_hooked()
