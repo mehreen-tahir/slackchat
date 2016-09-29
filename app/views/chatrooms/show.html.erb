@@ -1,9 +1,16 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Name:</strong>
-  <%= @chatroom.name %>
+  <%= @chatroom.titleize_name %>
 </p>
+<div data-behaviour="messages">
+  <% @messages.each do |message| %>
+    <div>
+      <strong> <%= message.user.username %> : </strong>
+      <%= message.body %>
+    </div>
+  <% end %>
+</div>
 
-<%= link_to 'Edit', edit_chatroom_path(@chatroom) %> |
-<%= link_to 'Back', chatrooms_path %>
+<%= form_for @message do |f| %>
+  <%= f.hidden_field :chatroom_id, value: @chatroom.id %>
+  <%= f.text_field :body, class: "form-control", autofocus: true %>
+<% end %>

@@ -10,6 +10,8 @@ class ChatroomsController < ApplicationController
   # GET /chatrooms/1
   # GET /chatrooms/1.json
   def show
+    @message = @chatroom.messages.new
+    @messages = @chatroom.messages.includes(:user).limit(100)
   end
 
   # GET /chatrooms/new
