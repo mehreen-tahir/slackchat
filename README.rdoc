@@ -1,1 +1,0 @@
-Chat application built in Ruby on Rails 5, where users can join and leave channels along with order crud operations. Messages are sent and received over action cable with unread message count and browser based notifications.
